@@ -1,6 +1,6 @@
 ﻿namespace NoteTakingApp
 {
-    partial class Userform
+    partial class UserForm
     {
         /// <summary>
         /// Required designer variable.
@@ -38,7 +38,7 @@
             this.saveBtn = new System.Windows.Forms.Button();
             this.passwordPrompt = new System.Windows.Forms.Label();
             this.password = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.showPwdBtn = new System.Windows.Forms.Button();
             this.ckSetPassword = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
@@ -135,15 +135,15 @@
             this.password.Size = new System.Drawing.Size(281, 20);
             this.password.TabIndex = 6;
             // 
-            // button1
+            // showPwdBtn
             // 
-            this.button1.Location = new System.Drawing.Point(81, 154);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.showPwdBtn.Location = new System.Drawing.Point(81, 154);
+            this.showPwdBtn.Name = "showPwdBtn";
+            this.showPwdBtn.Size = new System.Drawing.Size(98, 23);
+            this.showPwdBtn.TabIndex = 9;
+            this.showPwdBtn.Text = "Show-Password";
+            this.showPwdBtn.UseVisualStyleBackColor = true;
+            this.showPwdBtn.Click += new System.EventHandler(this.showPwdBtn_Click);
             // 
             // ckSetPassword
             // 
@@ -164,7 +164,7 @@
             this.CancelButton = this.cancelBtn;
             this.ClientSize = new System.Drawing.Size(384, 189);
             this.Controls.Add(this.ckSetPassword);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.showPwdBtn);
             this.Controls.Add(this.password);
             this.Controls.Add(this.passwordPrompt);
             this.Controls.Add(this.saveBtn);
@@ -196,7 +196,7 @@
         private System.Windows.Forms.Button saveBtn;
         private System.Windows.Forms.Label passwordPrompt;
         private System.Windows.Forms.TextBox password;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button showPwdBtn;
         private System.Windows.Forms.CheckBox ckSetPassword;
     }
 }

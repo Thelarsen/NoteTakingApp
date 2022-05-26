@@ -37,7 +37,7 @@
             this.exitMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.adminMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.userAdminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.caseManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -71,7 +71,7 @@
             this.createPDFMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.newCaseBtn = new System.Windows.Forms.Button();
             this.mainMenu.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -128,7 +128,7 @@
             // 
             this.adminMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.userAdminToolStripMenuItem,
-            this.searchToolStripMenuItem});
+            this.caseManagementToolStripMenuItem});
             this.adminMenu.Name = "adminMenu";
             this.adminMenu.Size = new System.Drawing.Size(55, 20);
             this.adminMenu.Text = "&Admin";
@@ -136,15 +136,16 @@
             // userAdminToolStripMenuItem
             // 
             this.userAdminToolStripMenuItem.Name = "userAdminToolStripMenuItem";
-            this.userAdminToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
-            this.userAdminToolStripMenuItem.Text = "&User admin";
-            this.userAdminToolStripMenuItem.Click += new System.EventHandler(this.userAdminToolStripMenuItem_Click);
+            this.userAdminToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.userAdminToolStripMenuItem.Text = "&User Management";
+            this.userAdminToolStripMenuItem.Click += new System.EventHandler(this.userManagementToolStripMenuItem_Click);
             // 
-            // searchToolStripMenuItem
+            // caseManagementToolStripMenuItem
             // 
-            this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
-            this.searchToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
-            this.searchToolStripMenuItem.Text = "&Data analysis";
+            this.caseManagementToolStripMenuItem.Name = "caseManagementToolStripMenuItem";
+            this.caseManagementToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.caseManagementToolStripMenuItem.Text = "&Case Management";
+            this.caseManagementToolStripMenuItem.Click += new System.EventHandler(this.caseManagementToolStripMenuItem_Click);
             // 
             // panel1
             // 
@@ -434,7 +435,7 @@
             // panel4
             // 
             this.panel4.Controls.Add(this.label1);
-            this.panel4.Controls.Add(this.button1);
+            this.panel4.Controls.Add(this.newCaseBtn);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
@@ -451,15 +452,15 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Cases";
             // 
-            // button1
+            // newCaseBtn
             // 
-            this.button1.Location = new System.Drawing.Point(68, -3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "New case";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.newCaseBtn.Location = new System.Drawing.Point(68, -3);
+            this.newCaseBtn.Name = "newCaseBtn";
+            this.newCaseBtn.Size = new System.Drawing.Size(75, 23);
+            this.newCaseBtn.TabIndex = 2;
+            this.newCaseBtn.Text = "New case";
+            this.newCaseBtn.UseVisualStyleBackColor = true;
+            this.newCaseBtn.Click += new System.EventHandler(this.newCaseBtn_Click);
             // 
             // MainWindow
             // 
@@ -507,8 +508,8 @@
         private System.Windows.Forms.ToolStripMenuItem userAdminToolStripMenuItem;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.ToolStripMenuItem searchToolStripMenuItem;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ToolStripMenuItem caseManagementToolStripMenuItem;
+        private System.Windows.Forms.Button newCaseBtn;
         private System.Windows.Forms.ListView caseListBox;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;

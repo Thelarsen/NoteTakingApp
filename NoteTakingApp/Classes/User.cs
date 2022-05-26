@@ -10,8 +10,8 @@ namespace NoteTakingApp.Classes
     [Table("users")]
     public class User
     {
-        [PrimaryKey, AutoIncrement]
-        public int id { get; set; }
+        // Attribute is used while creating this variable.
+        [PrimaryKey, AutoIncrement] public int id { get; set; }
         public string username { get; set; }
         public string password { get; set; }
         public string name { get; set; } 

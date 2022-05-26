@@ -157,7 +157,7 @@
             this.clearBtn.Name = "clearBtn";
             this.clearBtn.Size = new System.Drawing.Size(75, 27);
             this.clearBtn.TabIndex = 5;
-            this.clearBtn.Text = "Clear";
+            this.clearBtn.Text = "&Clear";
             this.clearBtn.UseVisualStyleBackColor = true;
             this.clearBtn.Click += new System.EventHandler(this.clearBtn_Click);
             // 
@@ -187,7 +187,7 @@
             this.autditLogBtn.Name = "autditLogBtn";
             this.autditLogBtn.Size = new System.Drawing.Size(75, 23);
             this.autditLogBtn.TabIndex = 6;
-            this.autditLogBtn.Text = "Audit log";
+            this.autditLogBtn.Text = "&Audit log";
             this.autditLogBtn.UseVisualStyleBackColor = true;
             this.autditLogBtn.Click += new System.EventHandler(this.autditLogBtn_Click);
             // 

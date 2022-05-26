@@ -13,7 +13,6 @@ namespace NoteTakingApp.Classes
         [PrimaryKey, AutoIncrement]
         public int id { get; set; }
         public string content { get; set; }        
-        public string tool { get; set; }
         [Indexed]
         public DateTime created { get; set; }
         [Indexed]

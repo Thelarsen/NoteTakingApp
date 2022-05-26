@@ -19,6 +19,5 @@ namespace NoteTakingApp.Classes
         public bool is_closed { get; set; } = false;
         [Indexed]
         public int user_id { get; set; }
-
     }
 }

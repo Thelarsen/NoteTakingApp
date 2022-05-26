@@ -8,6 +8,8 @@ namespace NoteTakingApp
 {
     internal static class Program
     {
+        internal static object s_document;
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>

@@ -19,14 +19,18 @@ namespace NoteTakingApp
         Note originalNote;
         public CaseForm(Case _case)
         {
-            InitializeComponent();
-            db = new Database();
-            caseobject = _case;
+            
+            InitializeComponent(); // Windows form function.
+            db = new Database(); // New database connection.
+            caseobject = _case; // Passed from MainWindow on case click.
             LoadNotes();
-            Text = "Notes for: " + caseobject.name;
-            if (!caseobject.is_closed) noteText.ReadOnly = false;
+            Text = "Notes for: " + caseobject.name; // Form.Text: labels window for note.
+            if (!caseobject.is_closed) noteText.ReadOnly = false; 
+            if (caseobject.is_closed) clearBtn.Enabled = false;
+            if (caseobject.is_closed) saveBtn.Enabled = false;
         }
 
+        // Clears text box and changes isEditing tag.
         private void clearBtn_Click(object sender, EventArgs e)
         {
             noteText.Clear();
@@ -34,6 +38,7 @@ namespace NoteTakingApp
             noteList.SelectedItems.Clear();
         }
 
+        // Saves note in text box, updates audit log and note list.
         private void saveBtn_Click(object sender, EventArgs e)
         {
             if (noteText.Text.Trim() == "")
@@ -42,13 +47,14 @@ namespace NoteTakingApp
                 return;
             }
 
+            // Creates new note.
             Note note = new Note();
             note.content = noteText.Text;
             note.case_id = caseobject.id;
             note.user_id = caseobject.user_id;
-            note.tool = "";
             note.created = DateTime.Now;
-
+            
+            // Triggered on clicking a note in the list.
             if (isEditing)
             {
                 note.is_edited = true;
@@ -60,27 +66,34 @@ namespace NoteTakingApp
                 audit.edited_content = note.content;
                 audit.note_id = note.id;
                 audit.user_id = note.user_id;
+                audit.case_id = note.case_id;
+                // Saves original content to audit log and updates the most recent note.
                 db.con.Insert(audit);
                 db.con.InsertOrReplace(note);
                 isEditing = false;
             }
+            // The default behavior is saving data in text box as new note.
             else
             {
                 db.con.Insert(note);
             }
 
+            // Refresh UI.
             noteText.Clear();
             LoadNotes();
         }
 
+        // Loading a list of notes from the chosen case and grabs the data from the database.
         public void LoadNotes()
         {
             List<Note> notes = db.con.Table<Note>().Where(n => n.case_id == caseobject.id).OrderByDescending(n => n.created).ToList();
             noteList.Items.Clear();
-            foreach (Note note in notes)
+            // Loop through each note and add data to the list.
+            foreach (Note note in notes) 
             {
                 ListViewItem item = new ListViewItem();
                 item.Text = note.created.ToString("dd.MM.yyyy HH:mm");
+                // If a note is edited it is marked with "*" in the list.
                 if (note.is_edited)
                 {
                     item.Text += " *";
@@ -90,7 +103,7 @@ namespace NoteTakingApp
                 noteList.Items.Add(item);
             }
         }
-
+        // When selecting a new note load the most recent data, check for case_closed, and change isEditing tag.
         private void noteList_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (noteList.SelectedItems.Count > 0)
@@ -105,7 +118,6 @@ namespace NoteTakingApp
                     originalNote.id = note.id;
                     originalNote.case_id = note.case_id;
                     originalNote.user_id = note.user_id;
-                    originalNote.tool = note.tool;
 
                     isEditing = true;
 
@@ -132,6 +144,7 @@ namespace NoteTakingApp
             }
         }
 
+        // Opens a window with the audit log for a given note on button click.
         private void autditLogBtn_Click(object sender, EventArgs e)
         {
             if (noteList.SelectedItems.Count > 0)
@@ -140,9 +153,9 @@ namespace NoteTakingApp
                 AuditLogForm auditLogForm = new AuditLogForm(selectedNote);
                 auditLogForm.ShowDialog(this);
             }
+            // The default behavior is giving an error if a note has not been chosen.
             else
             {
-                //TODO display messagebox
                 MessageBox.Show("Please select a note.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

@@ -18,17 +18,20 @@ namespace NoteTakingApp
         public NewCaseForm(User _user)
         {
             InitializeComponent();
-            db = new Database();
-            user = _user;
+            db = new Database(); // New database connection.
+            user = _user; // Passed from MainWindow.
         }
 
+        // Close program if cancel button is clicked.
         private void cancelBtn_Click(object sender, EventArgs e)
         {
-            Close();
+            Close(); // Form.Close: closes window.
         }
 
+        // Writes new case data to database and closes window.
         private void saveBtn_Click(object sender, EventArgs e)
         {
+            // Check if case name has been filled in.
             if (caseName.Text.Trim() == "")
             {
                 MessageBox.Show("Case name required", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -39,8 +42,9 @@ namespace NoteTakingApp
             Case.description = caseDescription.Text;
             Case.user_id = user.id;
             Case.created = DateTime.Now;
+            // Write to database and close window.
             db.con.Insert(Case);
-            Close();
+            Close(); // Form.Close: closes window.
         }
     }
 }
